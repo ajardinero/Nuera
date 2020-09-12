@@ -1,0 +1,7 @@
+NueraApp.DataAccess/bin/
+NueraApp.DataAccess/obj/
+NueraApp.Domain/bin/
+NueraApp.Domain/obj/
+NueraApp.Service/bin/
+NueraApp.Service/obj/
+NueraApp.Test/obj/
