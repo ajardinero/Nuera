@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using NueraApp.DataAccess.Data;
 using NueraApp.Service.Dependency;
 using NueraApp.DataAccess.Dependency;
+using AutoMapper;
 
 namespace NueraApp.Api
 {
@@ -25,6 +26,8 @@ namespace NueraApp.Api
         {
             services.AddServiceDependencies();
             services.AddDataAccessDependencies();
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllersWithViews();
 
