@@ -7,9 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.8" />
+    <PackageReference Include="Moq" Version="4.14.5" />
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NueraApp.Api\NueraApp.Api.csproj" />
+    <ProjectReference Include="..\NueraApp.DataAccess\NueraApp.DataAccess.csproj" />
+    <ProjectReference Include="..\NueraApp.Domain\NueraApp.Domain.csproj" />
+    <ProjectReference Include="..\NueraApp.Service\NueraApp.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Api\Controllers\" />
+    <Folder Include="Api\Mapper\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Service\Dependency\" />
   </ItemGroup>
 
 </Project>
