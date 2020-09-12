@@ -9,7 +9,7 @@ namespace NueraApp.DataAccess.Dependency
         public static IServiceCollection AddDataAccessDependencies(this IServiceCollection services)
         {
             services.AddScoped<IContentLimitCategoryDao, ContentLimitCategoryDao>();
-            services.AddScoped<IContentLimitItemsDao, ContentLimitItemsDao>();
+            services.AddScoped<IContentLimitItemDao, ContentLimitItemDao>();
             services.AddScoped<NueraAppDbContext, NueraAppDbContext>();
 
             return services;
