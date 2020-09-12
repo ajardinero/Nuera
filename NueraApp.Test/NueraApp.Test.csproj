@@ -24,9 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Api\Controllers\" />
-    <Folder Include="Api\Mapper\" />
-    <Folder Include="Domain\" />
-    <Folder Include="Service\Dependency\" />
   </ItemGroup>
 
 </Project>

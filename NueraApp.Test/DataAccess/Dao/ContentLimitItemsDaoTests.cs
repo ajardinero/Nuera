@@ -11,17 +11,17 @@ namespace NueraApp.Test.DataAccess.Dao
     public class ContentLimitItemsDaoTests
     {
         private FakeDbContext _fakeDbContext;
-        private Mock<DbSet<ContentLimitItem>> _contentLimitItemDbSet;
-        private IContentLimitItemsDao _sut;
+        private Mock<DbSet<ContentLimitItem>> _mockContentLimitItemDbSet;
+        private IContentLimitItemDao _sut;
 
         [SetUp]
         public void Setup()
         {
             _fakeDbContext = new FakeDbContext();
-            _sut = new ContentLimitItemsDao(_fakeDbContext);
+            _sut = new ContentLimitItemDao(_fakeDbContext);
 
-            _contentLimitItemDbSet = new Mock<DbSet<ContentLimitItem>>();
-            _fakeDbContext.ContentLimitItem = _contentLimitItemDbSet.Object;
+            _mockContentLimitItemDbSet = new Mock<DbSet<ContentLimitItem>>();
+            _fakeDbContext.ContentLimitItem = _mockContentLimitItemDbSet.Object;
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace NueraApp.Test.DataAccess.Dao
             _sut.Add(contentLimitItem);
 
             //VERIFY
-            _contentLimitItemDbSet.Verify(c => c.Add(It.Is<ContentLimitItem>(c => c == contentLimitItem)), Times.Once);
+            _mockContentLimitItemDbSet.Verify(c => c.Add(It.Is<ContentLimitItem>(c => c == contentLimitItem)), Times.Once);
         }
 
         [Test]
@@ -47,8 +47,8 @@ namespace NueraApp.Test.DataAccess.Dao
             _sut.Delete(itemId);
 
             //VERIFY
-            _contentLimitItemDbSet.Verify(c => c.Attach(It.IsAny<ContentLimitItem>()), Times.Once);
-            _contentLimitItemDbSet.Verify(c => c.Remove(It.IsAny<ContentLimitItem>()), Times.Once);
+            _mockContentLimitItemDbSet.Verify(c => c.Attach(It.IsAny<ContentLimitItem>()), Times.Once);
+            _mockContentLimitItemDbSet.Verify(c => c.Remove(It.IsAny<ContentLimitItem>()), Times.Once);
         }
     }
 }

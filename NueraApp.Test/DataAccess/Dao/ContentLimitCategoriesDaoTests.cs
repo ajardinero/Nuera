@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Moq;
 using NueraApp.DataAccess.Dao;
 using NueraApp.Domain.Models;
@@ -13,7 +11,7 @@ namespace NueraApp.Test.DataAccess.Dao
     public class ContentLimitCategoriesDaoTests
     {
         private FakeDbContext _fakeDbContext;
-        private Mock<DbSet<ContentLimitCategory>> _contentLimitCategoryDbSet;
+        private Mock<DbSet<ContentLimitCategory>> _mockContentLimitCategoryDbSet;
         private IContentLimitCategoryDao _sut;
 
         [SetUp]
@@ -22,8 +20,8 @@ namespace NueraApp.Test.DataAccess.Dao
             _fakeDbContext = new FakeDbContext();
             _sut = new ContentLimitCategoryDao(_fakeDbContext);
 
-            _contentLimitCategoryDbSet = new Mock<DbSet<ContentLimitCategory>>();
-            _fakeDbContext.ContentLimitCategory = _contentLimitCategoryDbSet.Object;
+            _mockContentLimitCategoryDbSet = new Mock<DbSet<ContentLimitCategory>>();
+            _fakeDbContext.ContentLimitCategory = _mockContentLimitCategoryDbSet.Object;
         }
 
         [Test]
@@ -36,7 +34,7 @@ namespace NueraApp.Test.DataAccess.Dao
             _sut.Get(categoryId);
 
             //VERIFY
-            _contentLimitCategoryDbSet.Verify(c => c.Find(It.Is<int>(id => id == categoryId)), Times.Once);
+            _mockContentLimitCategoryDbSet.Verify(c => c.Find(It.Is<int>(id => id == categoryId)), Times.Once);
         }
     }
 }

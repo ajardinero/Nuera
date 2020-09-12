@@ -5,6 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using NueraApp.DataAccess.Data;
+using NueraApp.Service.Dependency;
+using NueraApp.DataAccess.Dependency;
 
 namespace NueraApp.Api
 {
@@ -20,6 +23,9 @@ namespace NueraApp.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddServiceDependencies();
+            services.AddDataAccessDependencies();
+
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory
