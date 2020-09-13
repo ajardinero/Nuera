@@ -6,21 +6,21 @@ export class AddContentLimitItem extends Component {
         super(props);
         this.state = {
         }
-        this.handleToUpdate = this.props.handleToUpdate;
+        this.notifyParent = this.props.updateNotification;
         this.onAdd = this.onAdd.bind(this);
-        this.sayHello = this.sayHello.bind(this);
     }
 
     async onAdd() {
-        //alert("onAdd");
+        let selectedCategoryId = +document.getElementById("category").value;
+
         let headers = {
             "Content-Type": "application/json"
         }
 
         let data = {
-            "name": "Item4h",
-            "value": 470,
-            "contentLimitCategoryId": 4
+            "name": document.getElementById("itemName").value,
+            "value": +document.getElementById("itemValue").value,
+            "contentLimitCategoryId": selectedCategoryId
         }
 
         await fetch('ContentLimit/Items', {
@@ -28,12 +28,7 @@ export class AddContentLimitItem extends Component {
             headers: headers,
             body: JSON.stringify(data)
         });
-        this.handleToUpdate();
-    }
-
-    sayHello() {
-        alert('Hello!');
-        this.handleToUpdate();
+        this.notifyParent(selectedCategoryId);
     }
 
     render() {
