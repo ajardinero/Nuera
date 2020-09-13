@@ -16,6 +16,7 @@ export class ContentLimitContainer extends Component {
         this.getItemsForCategory = this.getItemsForCategory.bind(this);
         this.componentDidMount = this.componentDidMount(this);
         this.onNotifiedByChild = this.onNotifiedByChild.bind(this);
+        this.computeTotal = this.computeTotal.bind(this);
     }
 
     getCategories() {
@@ -48,6 +49,17 @@ export class ContentLimitContainer extends Component {
             });
     }
 
+    computeTotal() {
+        let sum = 0;
+        this.state.categories.map((category, categoryIndex) => {
+            if (this.state.itemsDictionary[category.id] !== undefined) {
+                sum += this.state.itemsDictionary[category.id].reduce((sum, current) => sum + current.value, 0);
+            }
+        });
+
+        return sum;
+    }
+
     componentDidMount() {
         this.getCategories();
     }
@@ -60,6 +72,10 @@ export class ContentLimitContainer extends Component {
         return (
             <div>
                 <ContentLimitCategories categories={this.state.categories} itemsDictionary={this.state.itemsDictionary} updateNotification={this.onNotifiedByChild} />
+                <br/>
+                <div class="cat-name">TOTAL</div>
+                <div class="cat-value">{'\u0024'}{this.computeTotal()}</div>
+                <br />
                 <AddContentLimitItem updateNotification={this.onNotifiedByChild} />
             </div>
         );

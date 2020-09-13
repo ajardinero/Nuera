@@ -35,15 +35,15 @@ export class AddContentLimitItem extends Component {
         
         return (
             <div>
-                <input type="text" id="itemName" name="itemName" placeholder="Item Name" />
-                <input type="number" id="itemValue" name="itemValue" step="10" placeholder="Item Value" />
+                <input class="item-name" type="text" id="itemName" name="itemName" placeholder="Item Name" />
+                <input class="item-name" type="number" id="itemValue" name="itemValue" step="10" placeholder="Item Value" />
                 <select id="category" name="category">
                     <option value="1">Clothing</option>
                     <option value="2">Electronics</option>
                     <option value="3">Kitchen</option>
                     <option value="4">Miscellaneous</option>
                 </select>
-                <button onClick={this.onAdd}>Add</button>
+                <button class="add" onClick={this.onAdd}>Add</button>
             </div>
             
         );

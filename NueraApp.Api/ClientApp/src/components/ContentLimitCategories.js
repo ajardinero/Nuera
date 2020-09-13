@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { ContentLimitItems } from './ContentLimitItems';
 
+import './custom.css'
 
 export class ContentLimitCategories extends Component {
     constructor(props) {
@@ -38,8 +39,10 @@ export class ContentLimitCategories extends Component {
                 {this.state.categories.map((category, categoryIndex) => {
                     return (
                         <div>
-                            <h1>{category.categoryName}     {this.getTotalValue(category.id)} </h1>
-                            <ContentLimitItems categoryId={category.id} itemsDictionary={this.state.itemsDictionary} updateNotification={this.onNotifiedByChild} />    
+                            <div class="cat-name">{category.categoryName} </div>
+                            <div class="cat-value">{'\u0024'}{this.getTotalValue(category.id)} </div>
+                            <ContentLimitItems categoryId={category.id} itemsDictionary={this.state.itemsDictionary} updateNotification={this.onNotifiedByChild} />
+                            <br />
                         </div>)
                 })}
             </div>

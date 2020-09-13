@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
-
+import './custom.css'
+import trash from '../img/trash.jpg';
 
 export class ContentLimitItems extends Component {
     constructor(props) {
@@ -35,7 +36,9 @@ export class ContentLimitItems extends Component {
                     this.state.items.map((item, itemIndex) => {
                         return(
                             <div>
-                                <h3> {item.name}  {item.value} <button onClick={() => this.onDelete(item.id)}>Delete</button> </h3>
+                                <div class="item-name"> {item.name} </div>
+                                <div class="item-value">{'\u0024'}{item.value} </div>
+                                <div class="item-delete"><input class="delete" type="image" height="20" width="20" src={trash} onClick={() => this.onDelete(item.id)}/></div>
                             </div>
                         )
                     })
