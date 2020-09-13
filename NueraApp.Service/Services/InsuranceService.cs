@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NueraApp.DataAccess.Dao;
 using NueraApp.Domain.Models;
 
@@ -19,6 +20,10 @@ namespace NueraApp.Service.Services
         {
             var category = _contentLimitCategoryDao.Get(item.ContentLimitCategoryId);
             item.ContentLimitCategory = category;
+            item.CreatedBy = "system";
+            item.Created = DateTime.Now;
+            item.LastModifiedBy = "system";
+            item.LastModified = DateTime.Now;
             _contentLimitItemsDao.Add(item);
             return item.Id;
         }
